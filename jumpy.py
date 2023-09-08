@@ -8,7 +8,6 @@ from enemy import Enemy
 import encrypt
 from encrypt import Encrypt
 from encrypt import Decrypt
-from encrypt import FileEncryptor
 
 mixer.init()
 pygame.init()
