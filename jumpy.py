@@ -5,6 +5,10 @@ import sys
 from pygame import mixer
 from spritesheet import SpriteSheet
 from enemy import Enemy
+import encrypt
+from encrypt import Encrypt
+from encrypt import Decrypt
+from encrypt import FileEncryptor
 
 mixer.init()
 pygame.init()
@@ -38,6 +42,7 @@ fade_counter = 0
 
 if os.path.exists('best.json'):
     with open('best.json', 'r') as file:
+        Decrypt('best.json', 'key')
         high_score = int(file.read())
 else:
     high_score = 0
@@ -99,7 +104,7 @@ while startmenu:
     screen.blit(start_image, (screen_width/2 - 105, screen_height - 250))
     pygame.display.flip()
     key = pygame.key.get_pressed()
-    if key[pygame.K_SPACE]:
+    if key[pygame.K_SPACE] or key[pygame.K_RETURN]:
         startmenu = False
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -288,7 +293,7 @@ while run:
 
 
         key = pygame.key.get_pressed()
-        if key[pygame.K_SPACE]:
+        if key[pygame.K_SPACE] or key[pygame.K_RETURN]:
             game_over = False
             score = 0
             scroll = 0
@@ -316,5 +321,6 @@ while run:
 
     pygame.display.update()
 
+Encrypt('best.json')
 pygame.quit()
 
