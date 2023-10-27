@@ -107,6 +107,8 @@ while startmenu:
         startmenu = False
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            Encrypt('best.json')
+            pygame.quit()
             sys.exit()
 
 class Player(pygame.sprite.Sprite):
