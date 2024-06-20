@@ -9,12 +9,6 @@ import encrypt
 from encrypt import Encrypt
 from encrypt import Decrypt
 
-import os
-import pygame
-from pygame import mixer
-import random
-import sys
-
 # Initialize the mixer and pygame
 mixer.init()
 pygame.init()
