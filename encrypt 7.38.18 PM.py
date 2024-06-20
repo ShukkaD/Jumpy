@@ -4,7 +4,7 @@ from cryptography.fernet import Fernet
 key = Fernet.generate_key()
 
 
-class Encrypt:
+class Encrypt():
     def __init__(self, file):
         global key
         base_dir = os.path.dirname(file)
@@ -22,24 +22,7 @@ class Encrypt:
             encrypted_file.write(encrypted)
 
 
-class FileEncryptor():
-    def __init__(self, key):
-        self.fernet = Fernet(key)
-
-    def is_encrypted(self, file_path):
-        try:
-            base_dir = os.path.dirname(file_path)
-            file_path = os.path.join(base_dir, file_path)
-            with open(file_path, 'rb') as enc_file:
-                encrypted = enc_file.read()
-            self.fernet.decrypt(encrypted)
-            return True
-        except Exception as e:
-            # If an exception occurs during decryption, the file is not encrypted.
-            return False
-
-
-class Decrypt:
+class Decrypt():
     def __init__(self, file, key_file):
         base_dir = os.path.dirname(file)
         self.file = os.path.join(base_dir, file)
